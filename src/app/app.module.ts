@@ -9,10 +9,14 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 
 
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { environment } from '../environments/environment';
+//import { AngularFireModule } from 'angularfire2';
+//import { AngularFireDatabaseModule } from 'angularfire2/database';
+//import { environment } from '../environments/environment';
 import { AppServiceService } from './shared/app-service.service';
+import { ProductListComponent } from './product-list/product-list.component';
+import { HttpClientModule } from '@angular/common/http';
+
+
 
 
 @NgModule({
@@ -22,13 +26,15 @@ import { AppServiceService } from './shared/app-service.service';
     routingComponents,
     HomeComponent,
     RegisterComponent,
+    ProductListComponent,
   ],
   imports: [
     BrowserModule,
     AppRouting,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireDatabaseModule
+    //AngularFireModule.initializeApp(environment.firebaseConfig),
+    //AngularFireDatabaseModule,
+    HttpClientModule
   ],
   providers: [AppServiceService],
   bootstrap: [AppComponent]

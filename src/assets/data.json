@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Apple",
+    "image": "assets/img/apple.jpeg",
+    "price": "15",
+    "stock": "150"
+  },
+  {
+    "id": 2,
+    "name": "Orange",
+    "image": "assets/img/orange.jpeg",
+    "price": "20",
+    "stock": "170"
+  },
+  {
+    "id": 3,
+    "name": "Banana",
+    "image": "assets/img/banana.jpeg",
+    "price": "25",
+    "stock": "190"
+  },
+  {
+    "id": 4,
+    "name": "Coconut",
+    "image": "assets/img/coconut.jpeg",
+    "price": "30",
+    "stock": "210"
+  },
+  {
+    "id": 5,
+    "name": "Strawberry",
+    "image": "assets/img/strawberry.jpeg",
+    "price": "35",
+    "stock": "230"
+  },
+  {
+    "id": 6,
+    "name": "Kewy",
+    "image": "assets/img/kewy.jpeg",
+    "price": "40",
+    "stock": "250"
+  }
+]

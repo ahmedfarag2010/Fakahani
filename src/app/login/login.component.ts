@@ -16,20 +16,20 @@ export class LoginComponent implements OnInit {
 
 
 
-  username:any;
-  password:any
+  // username:any;
+  // password:any
 
   ngOnInit() {
   }
 
-  onLogin(){
-    if(this.username == this._service.allUsers[0].username && this.password == this._service.allUsers[0].password){
-      alert('true')
-    } else{
-      alert('Your username or password is incorrect.')
-    }
+  // onLogin(){
+  //   if(this.username == this._service.allUsers[0].username && this.password == this._service.allUsers[0].password){
+  //     alert('true')
+  //   } else{
+  //     alert('Your username or password is incorrect.')
+  //   }
     
-  }
+  // }
 
   
 
