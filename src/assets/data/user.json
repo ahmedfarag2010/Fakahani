@@ -1,0 +1,10 @@
+[
+    {
+      "id": 1,
+      "name": "admin",
+      "profile": "assets/img/apple.jpeg",
+      "password": "admin",
+      "email": "admin_admin@admin.com",
+      "gander": "female"
+    }
+]

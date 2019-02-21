@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 //import { AngularFireDatabase, AngularFireList } from "angularfire2/database"; 
 import { HttpClient } from '@angular/common/http';
 import { Product } from './product-interface'
+import { User } from './user-interface'
 import { Observable } from 'rxjs';
 
 
@@ -13,7 +14,7 @@ import { Observable } from 'rxjs';
 })
 export class AppServiceService {
 
-  //islogged:boolean = false;
+  islogged:boolean = true;
 
   //users: AngularFireList<any[]>;
   //allUsers:any;
@@ -21,7 +22,9 @@ export class AppServiceService {
   //username;
   //password;
 
-  private dataSource = '/assets/data.json'
+  private _products = '/assets/data/product.json'
+  private _user = '/assets/data/user.json'
+  
 
   constructor(private _http : HttpClient) {
   //constructor(private _db : AngularFireDatabase,private _http : HttpClient) {  
@@ -37,8 +40,12 @@ export class AppServiceService {
     //this.password = this._db.list('/users/password')
    }
 
-   getData(): Observable<Product[]>{
-    return this._http.get<Product[]>(this.dataSource)
+   getProducts(): Observable<Product[]>{
+    return this._http.get<Product[]>(this._products)
+   }
+
+   getUsers(): Observable<User[]>{
+     return this._http.get<User[]>(this._user)
    }
 
 }

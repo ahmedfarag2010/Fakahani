@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppServiceService } from '../shared/app-service.service';
+import { AuthService } from '../services/auth.service';
 
 
 
@@ -12,24 +12,24 @@ import { AppServiceService } from '../shared/app-service.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private _service:AppServiceService) { }
+  constructor(private _authService:AuthService) { }
 
-
-
-  // username:any;
-  // password:any
+  
 
   ngOnInit() {
+   
   }
 
-  // onLogin(){
-  //   if(this.username == this._service.allUsers[0].username && this.password == this._service.allUsers[0].password){
-  //     alert('true')
-  //   } else{
-  //     alert('Your username or password is incorrect.')
-  //   }
-    
-  // }
+  login(form){
+    let data = form.value
+    this._authService.userLogin(data.email,data.password)
+    .then(result => {
+      console.log(result)
+    })
+    .catch(err=> console.log('err',err))
+  }
+
+  
 
   
 

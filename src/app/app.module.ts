@@ -9,9 +9,12 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 
 
-//import { AngularFireModule } from 'angularfire2';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule , FirestoreSettingsToken } from '@angular/fire/firestore'
 //import { AngularFireDatabaseModule } from 'angularfire2/database';
-//import { environment } from '../environments/environment';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
+import { environment } from '../environments/environment';
 import { AppServiceService } from './shared/app-service.service';
 import { ProductListComponent } from './product-list/product-list.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -32,11 +35,15 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRouting,
     FormsModule,
-    //AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     //AngularFireDatabaseModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFirestoreModule,
+    AngularFireAuthModule,
   ],
-  providers: [AppServiceService],
+  providers: [AppServiceService,
+    {provide:FirestoreSettingsToken,useValue:{}}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

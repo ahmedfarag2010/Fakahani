@@ -1,25 +1,37 @@
 <div class="row">
   <div class="col-md-12">
     <h1>Register now</h1>
-    <form>
+    <form #myForm="ngForm" (ngSubmit)="register(myForm)">
       <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control"  aria-describedby="emailHelp" placeholder="Enter email">
+        <label>Name</label>
+        <input ngModel name="name" #name="ngModel" type="text" class="form-control"  required placeholder="Enter name">
+        <div *ngIf="name.invalid && name.touched" class="alert alert-danger">Name is required</div>
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control"  placeholder="Password">
+        <label>Email address</label>
+        <input ngModel name="email" #email="ngModel" type="email" class="form-control"  required placeholder="Enter email">
+        <div *ngIf="email.touched && email.errors?.required" class="alert alert-danger">Email is required</div>
+        <div *ngIf="email.touched && email.errors?.email" class="alert alert-danger">Email is not valid</div>
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1">Re type password</label>
-        <input type="password" class="form-control"  placeholder="Password">
+        <label>Password</label>
+        <input ngModel name="password" #password="ngModel" type="password" class="form-control" required placeholder="Password" minlength="6">
+        <div *ngIf="password.touched && password.errors?.required" class="alert alert-danger">Password is required</div>
+        <div *ngIf="password.touched && password.errors?.minlength" class="alert alert-danger">Password minlength 6 chars</div>
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1">phone number</label>
-        <input type="text" class="form-control"  placeholder="phone">
+        <label>Re type password</label>
+        <input ngModel name="passwordConfirm" #passwordConfirm="ngModel" type="password" class="form-control" required placeholder="Password">
+        <div *ngIf="passwordConfirm.invalid && passwordConfirm.touched" class="alert alert-danger">Password is required</div>
+        <div *ngIf="passwordConfirm.value != password.value && passwordConfirm.touched" class="alert alert-danger">Passwords are not matches</div>
       </div>
-
-      <button type="submit" class="btn btn-success">Register</button>
+      <div class="form-group">
+        <label>phone number</label>
+        <input ngModel name="phone" #phone="ngModel" type="text" class="form-control" placeholder="phone" required>
+        <div *ngIf="phone.invalid && phone.touched" class="alert alert-danger">Phone number is required</div>
+      </div>
+      <button type="submit" [disabled]="myForm.invalid || passwordConfirm.value != password.value" class="btn btn-success">Register</button>
+      <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
     </form>
   </div>
 </div>
