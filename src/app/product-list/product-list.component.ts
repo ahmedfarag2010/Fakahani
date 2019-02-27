@@ -3,6 +3,7 @@ import { AppServiceService } from '../shared/app-service.service'
 import { ProductsService } from '../services/products.service';
 import { Product } from '../shared/product-interface'
 import { Subscription } from 'rxjs';
+import { CardService } from '../services/card.service';
 
 @Component({
   selector: 'app-product-list',
@@ -13,23 +14,12 @@ export class ProductListComponent implements OnInit,OnDestroy {
 
   products:Product[] = []
   productsObservable: Subscription
+  indexProductNumber = -1
 
-  constructor(private _productsService : ProductsService) { }
+  constructor(private _productsService : ProductsService, private _cardService:CardService) { }
 
-
-  // startOrder(){
-  //   if(this._service.islogged == false){
-  //     alert('you are not logged, please login first')
-  //   } else {
-  //     alert('start order')
-  //   }
-  // }
 
   ngOnInit() {
-    // this._service.getProducts()
-    // .subscribe(data => {
-    //   this.products = data
-    // })
     this.productsObservable = this._productsService.getProducts().subscribe(data => {
       this.products = data.map(element => {
         return{
@@ -42,6 +32,24 @@ export class ProductListComponent implements OnInit,OnDestroy {
 
   ngOnDestroy(){
     this.productsObservable.unsubscribe()
+  }
+
+  buy(index:number,quantity:number){
+    this.indexProductNumber = +index
+    let selectedProduct = this.products[this.indexProductNumber]
+    //console.log(selectedProduct)
+
+    let data = {
+      name: selectedProduct.name,
+      quantity: +quantity,
+      price: selectedProduct.price
+    }
+
+    
+    this._cardService.addToCard(data)
+    .then(()=>{
+      this.indexProductNumber = -1
+    })
   }
 
 }

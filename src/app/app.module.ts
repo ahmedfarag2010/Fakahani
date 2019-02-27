@@ -18,6 +18,7 @@ import { environment } from '../environments/environment';
 import { AppServiceService } from './shared/app-service.service';
 import { ProductListComponent } from './product-list/product-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MyOrdersComponent } from './my-orders/my-orders.component';
 
 
 
@@ -30,6 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     RegisterComponent,
     ProductListComponent,
+    MyOrdersComponent,
   ],
   imports: [
     BrowserModule,

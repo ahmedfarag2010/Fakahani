@@ -24,6 +24,7 @@ export class AppComponent implements OnInit{
         this._authService.userId = user.uid
       } else{
         this.isLogged = false
+        this._authService.userId = ''
       }
     })
   }
