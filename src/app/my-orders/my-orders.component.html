@@ -15,8 +15,8 @@
       </td>
       <td>{{order.price * order.quantity | currency}}</td>
       <td>
-        <button class="btn btn-primary">Save</button>
-        <button class="btn btn-danger">Delete</button>
+        <button class="btn btn-primary" (click)="save(i)">Save</button>
+        <button class="btn btn-danger" (click)="delete(i)">Delete</button>
       </td>
     </tr>
   </tbody>

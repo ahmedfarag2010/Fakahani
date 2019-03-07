@@ -25,4 +25,12 @@ export class MyOrdersComponent implements OnInit {
     })
   }
 
+  delete(index){
+    this._cardService.delete(this.card[index].id)
+  }
+
+  save(index){
+    this._cardService.save(this.card[index].id,this.card[index].quantity)
+  }
+
 }

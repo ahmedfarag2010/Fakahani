@@ -21,7 +21,9 @@ export class AuthService {
   }
 
   userLogin(email,password){
+    this._router.navigate(['/'])
     return this._angularFireAuth.auth.signInWithEmailAndPassword(email,password)
+    
   }
 
   userLogout(){

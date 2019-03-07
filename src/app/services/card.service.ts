@@ -17,4 +17,14 @@ export class CardService {
   getOrders(){
     return this._angularFirestore.collection(`users/${this._authService.userId}/card`).snapshotChanges()
   }
+
+  delete(id){
+    return this._angularFirestore.doc(`users/${this._authService.userId}/card/${id}`).delete()
+  }
+
+  save(id,quantity){
+    return this._angularFirestore.doc(`users/${this._authService.userId}/card/${id}`).update({
+      quantity
+    })
+  }
 }

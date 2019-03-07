@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 
 
@@ -12,7 +13,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private _authService:AuthService) { }
+  constructor(private _authService:AuthService, private _router:Router) { }
 
   
 
@@ -23,6 +24,7 @@ export class LoginComponent implements OnInit {
   login(form){
     let data = form.value
     this._authService.userLogin(data.email,data.password)
+    //this._router.navigate(['/'])
     .then(result => {
       console.log(result)
     })
